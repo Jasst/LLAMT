@@ -1,0 +1,8 @@
+{% for m in messages %}{% if m['role'] == 'system' %}### system
+{{ m['content'] }}
+{% elif m['role'] == 'user' %}### user
+{{ m['content'] }}
+{% elif m['role'] == 'assistant' %}### assistant
+{{ m['content'] }}
+{% endif %}{% endfor %}{% if add_generation_prompt %}### assistant
+{% endif %}

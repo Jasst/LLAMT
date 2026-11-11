@@ -1,0 +1,149 @@
+/* Тёмно-серый градиентный интерфейс для Gradio LLAMT */
+:root {
+    --bg-0: #0d0e11;
+    --bg-1: #17181c;
+    --bg-2: #212329;
+    --bg-3: #2b2e35;
+    --border: rgba(255, 255, 255, 0.09);
+    --border-focus: #b6bec9;
+    --text: #eceef1;
+    --text-2: #a6abb5;
+    --muted: #787e89;
+    --accent-1: #5b626f;
+    --accent-2: #7d8595;
+    --accent-3: #a7afbc;
+    --ok: #4cc38a;
+    --danger: #e5544f;
+    --shadow: 0 10px 34px rgba(0, 0, 0, 0.45);
+}
+
+.gradio-container {
+    max-width: 100% !important;
+    background:
+        radial-gradient(ellipse 90% 60% at 50% -20%,
+                        rgba(255, 255, 255, 0.06), transparent 70%),
+        linear-gradient(180deg, #0d0e11 0%, #12131a 60%, #0f1013 100%) !important;
+    color: var(--text);
+}
+
+body, .gradio-container { font-family: 'Inter', system-ui, -apple-system,
+                         'Segoe UI', Roboto, sans-serif; }
+
+/* ── Шапка ── */
+.header-row {
+    align-items: center;
+    padding: 10px 14px 12px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 14px;
+    gap: 12px;
+    background: linear-gradient(90deg,
+        rgba(255,255,255,0.02), rgba(255,255,255,0.0));
+    border-radius: 14px 14px 0 0;
+}
+.header-row .logo h2 {
+    margin: 0;
+    font-size: 22px;
+    line-height: 1.2;
+    white-space: nowrap;
+    background: linear-gradient(135deg, var(--accent-1), var(--accent-3));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+    letter-spacing: -0.3px;
+}
+
+/* ── Бейджи ── */
+.badge-wrap { display: flex; align-items: center; min-width: 0; }
+.badge {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    border: 1px solid var(--border);
+}
+.badge-on   { background: rgba(76, 195, 138, .15); color: var(--ok);
+              border-color: rgba(76, 195, 138, .3); }
+.badge-off  { background: rgba(148, 163, 184, .12); color: var(--muted); }
+.badge-idle { background: rgba(148, 163, 184, .12); color: var(--muted); }
+.badge-quant { background: linear-gradient(135deg, #3a3f4a, #1f2228);
+               color: #cfd5df; border-color: rgba(255,255,255,.15);
+               font-family: ui-monospace, monospace; font-size: 12px; }
+
+/* ── Сайдбар ── */
+.sidebar {
+    background: linear-gradient(180deg, var(--bg-1), var(--bg-0));
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 10px;
+    height: fit-content;
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+    box-shadow: var(--shadow);
+}
+.main { padding-left: 8px; }
+.controls-row { gap: 6px; margin-top: 8px; }
+
+/* ── Кнопки ── */
+button.gr-button-stop, .gr-button-stop {
+    background: linear-gradient(135deg, #b91c1c, #7f1414) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: 10px !important;
+}
+.gradio-container button.primary, .gradio-container .primary {
+    background: linear-gradient(135deg, #3d4250, #22252c) !important;
+    color: #fff !important;
+    border: 1px solid rgba(255, 255, 255, 0.10) !important;
+    border-radius: 10px !important;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.35) !important;
+}
+.gradio-container button.primary:hover, .gradio-container .primary:hover {
+    background: linear-gradient(135deg, #4b5162, #2b2e35) !important;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* ── Чат ── */
+.chatbot {
+    border-radius: 14px;
+    border: 1px solid var(--border) !important;
+    background: linear-gradient(180deg, var(--bg-1), #101116) !important;
+    box-shadow: var(--shadow) !important;
+}
+
+/* ── Инпуты и слайдеры ── */
+input[type="text"], textarea, .gradio-container .wrap input,
+.gradio-container .wrap textarea {
+    background: var(--bg-1) !important;
+    color: var(--text) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 9px !important;
+    transition: border-color 150ms ease, box-shadow 150ms ease;
+}
+input[type="text"]:focus, textarea:focus {
+    border-color: var(--border-focus) !important;
+    box-shadow: 0 0 0 3px rgba(182, 190, 201, 0.15) !important;
+    outline: none !important;
+}
+
+/* ── Табы ── */
+.tab-nav button {
+    background: transparent !important;
+    color: var(--text-2) !important;
+    border: none !important;
+    border-radius: 8px 8px 0 0 !important;
+}
+.tab-nav button.selected {
+    color: var(--text) !important;
+    background: linear-gradient(180deg, var(--bg-3), var(--bg-2)) !important;
+    border-bottom: 2px solid var(--accent-3) !important;
+}
+
+/* ── Скрыть стандартные подписи Gradio ── */
+.gradio-container .label-wrap { color: var(--text-2) !important; }
+.gradio-container .block { background: transparent !important; }
